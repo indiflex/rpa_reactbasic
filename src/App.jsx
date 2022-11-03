@@ -9,6 +9,7 @@ function App() {
 
   const click100 = () => {
     let i = 0;
+    console.log('aaa')
     const intl = setInterval(() => {
       i += 1;
       setCount(count + i);
