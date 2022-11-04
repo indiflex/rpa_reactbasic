@@ -1,40 +1,32 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
 import './App.css';
-import { Hello, Hello2 } from './Hello';
+import { Hello, Hello2 } from './components/Hello';
 
 function App() {
   const [count, setCount] = useState(0);
 
-  const click100 = () => {
-    let i = 0;
-    console.log('aaa');
-    const intl = setInterval(() => {
-      i += 1;
-      setCount(count + i);
-
-      if (i === 100) clearInterval(intl);
-    }, 0);
+  let xxx = 333;
+  const changeXxx = () => {
+    xxx += 1;
+    console.log('xxx=', xxx);
+    setCount(xxx);
   };
 
   return (
     <div className='App'>
       <div>
-        <Hello name='알파코' />
-        <Hello2 name='시니어코딩' />
-        <a href='https://vitejs.dev' target='_blank' rel='noreferrer'>
-          <img src='/vite.svg' className='logo' alt='Vite logo' />
-        </a>
-        <a href='https://reactjs.org' target='_blank' rel='noreferrer'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
+        <Hello name='시코' weather='맑음' />
+        <Hello2 name='시니어코딩'>
+          <div>하하하</div>
+        </Hello2>
+        <h2>xxx: {xxx}</h2>
       </div>
       <h1>Vite + React</h1>
       <div className='card'>
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count} !!
         </button>
-        <button onClick={click100}>100</button>
+        <button onClick={changeXxx}>ChangeXXX</button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
