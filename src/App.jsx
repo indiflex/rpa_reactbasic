@@ -1,39 +1,42 @@
 import { useState } from 'react';
 import './App.css';
-import { Hello, Hello2 } from './components/Hello';
+import { Hello } from './components/Hello';
+import { My } from './components/My';
+
+const SampleSession = {
+  loginUser: { id: 1, name: 'Hong' },
+  cart: [
+    { id: 100, name: '라면', price: 3000 },
+    { id: 101, name: '컵라면', price: 2000 },
+    { id: 200, name: '파', price: 5000 },
+  ],
+};
 
 function App() {
   const [count, setCount] = useState(0);
+  const [session, setSession] = useState(SampleSession);
 
-  let xxx = 333;
-  const changeXxx = () => {
-    xxx += 1;
-    console.log('xxx=', xxx);
-    setCount(xxx);
+  const login = (id, name) => {
+    setSession({ ...session, loginUser: { id, name } });
+  };
+
+  const logout = () => {
+    setSession({ ...session, loginUser: null });
   };
 
   return (
     <div className='App'>
       <div>
         <Hello name='시코' weather='맑음' />
-        <Hello2 name='시니어코딩'>
-          <div>하하하</div>
-        </Hello2>
-        <h2>xxx: {xxx}</h2>
       </div>
-      <h1>Vite + React</h1>
+      <hr />
+      <My session={session} login={login} logout={logout} />
+      <hr />
       <div className='card'>
         <button onClick={() => setCount((count) => count + 1)}>
-          count is {count} !!
+          count is {count} !
         </button>
-        <button onClick={changeXxx}>ChangeXXX</button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
-      <p className='read-the-docs'>
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export const Hello = (props) => {
   console.log('@@@@@ Hello');
-  const [isActive, setActive] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   return (
     <>
@@ -10,7 +10,7 @@ export const Hello = (props) => {
       <h3>
         날씨: {props.weather} - {isActive && '^^'}
       </h3>
-      <button onClick={() => setActive(!isActive)}>
+      <button onClick={() => setIsActive(!isActive)}>
         Toggle Active: {isActive ? 'Active!' : ''}
       </button>
     </>
