@@ -1,4 +1,8 @@
-export const Profile = ({ session, logout }) => {
+import { useSession } from '../hooks/session-context';
+
+// export const Profile = ({ session, logout }) => {
+export const Profile = () => {
+  const { session, logout } = useSession();
   return (
     <>
       <h2>

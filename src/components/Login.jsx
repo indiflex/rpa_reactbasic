@@ -1,13 +1,21 @@
 import { useState } from 'react';
+import { useSession } from '../hooks/session-context';
 
-export const Login = ({ login }) => {
+// export const Login = ({ login }) => {
+export const Login = () => {
+  const { login } = useSession();
   const [userId, setUserId] = useState(10);
   const [userName, setUserName] = useState('홍길동');
 
   return (
     <>
       <h2>Login Please</h2>
-      <form onSubmit={() => login(userId, userName)}>
+      <form
+        onSubmit={(evt) => {
+          evt.preventDefault();
+          login(userId, userName);
+        }}
+      >
         <label htmlFor='user-id'>UserID:</label>
         <input
           id='user-id'
@@ -24,7 +32,7 @@ export const Login = ({ login }) => {
           onChange={(evt) => setUserName(evt.target.value)}
         />
 
-        <button>Login</button>
+        <button type='submit'>Login</button>
       </form>
     </>
   );
